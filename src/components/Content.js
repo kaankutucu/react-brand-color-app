@@ -15,7 +15,7 @@ function Content() {
         <main className="content">
             <header className="header">
                 <Search/>
-                {selectedBrands.length === 1  && <Download/>}
+                {selectedBrands.length > 0  && <Download/>}
             </header>
 
             <section className="brands">
