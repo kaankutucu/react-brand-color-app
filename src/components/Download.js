@@ -91,7 +91,7 @@ function Download() {
             </div>
             <div className="selected" onClick={() => setSelectedBrands([])}>
                 <GrClose/>
-                {selectedBrands.length} brands collected
+                {selectedBrands.length} brand collected
             </div>
         </div>
     );
