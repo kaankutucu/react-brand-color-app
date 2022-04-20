@@ -4,8 +4,17 @@ import Content from "./components/Content";
 import MainContext from "./MainContext";
 import BrandsData from "./brands.json";
 import Copied from "./components/Copied";
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useState} from 'react';
 import './App.css';
+import Collection from "./components/Collection";
+import React from "react";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+} from "react-router-dom";
+
 
 
 
@@ -16,7 +25,6 @@ function App() {
     Object.keys(BrandsData).map(key => {
         brandsArray.push(BrandsData[key])
     })
-
     const [brands, setBrands] = useState(brandsArray)
     const [selectedBrands, setSelectedBrands] = useState([])
     const [copied, setCopied] = useState(false)
@@ -61,8 +69,16 @@ function App() {
             <MainContext.Provider value={data}>
                 {copied && <Copied color={copied}/>}
                 <Sidebar/>
-                <Content/>
-
+                <Router>
+                    <Switch>
+                        <Route exact path="/" >
+                            <Content/>
+                        </Route>
+                        <Route path="/collection/:slugs" >
+                            <Collection/>
+                        </Route>
+                    </Switch>
+                </Router>
             </MainContext.Provider>
         </>
     );
