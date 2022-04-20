@@ -4,6 +4,7 @@ import MainContext from "../MainContext";
 import {useContext} from "react";
 import LazyLoad from 'react-lazyload';
 import Download from "./Download";
+import Loader from "./Loader";
 
 
 function Content() {
@@ -21,7 +22,7 @@ function Content() {
             <section className="brands">
                 {
                     brands.map(brand => (
-                        <LazyLoad key={brand.slug} overflow={true} once={true} placeholder="Yükleniyor..." >
+                        <LazyLoad key={brand.slug} overflow={true} once={true} placeholder={<Loader/>} >
                             <Brand brand={brand}/>
                         </LazyLoad>
                     ))
